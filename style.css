@@ -1,0 +1,139 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+
+:root{
+    --title-font: "Knewave", system-ui; 
+    --main-font: "Open",system-ui;
+}
+body{
+    background-image: url("images/rm218batch4-ning-34.jpg");
+    background-size:auto; 
+    background-position: center; 
+}
+
+nav {
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-right: 5px;
+    display: flex;
+    float:right;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.3rem;
+    font-style: italic;
+}
+
+nav ul li a:hover{
+    color:aquamarine;
+}
+
+
+h1{
+    font-family: var(--main-font);
+    font-size: 2.5rem;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    
+}
+h2{
+    font-family: var(--main-font);
+    font-size: 1.6rem;
+}
+h3{
+    font-family: var(--main-font);
+    font-size: 1.2rem;
+}
+
+p{
+    font-family: var(--main-font);
+}
+
+.about_me{
+    text-align: center;
+    padding-top: 60px;
+}
+
+img{
+    border-radius: 20px;
+    border: 2px solid whitesmoke;
+    width: 250px;
+    height: auto;
+    transition: transform 0.3s ease; 
+}
+
+img:hover {
+    transform: scale(1.1); /* Agrandit légèrement l'image au survol */
+}
+
+/* === removing default button style ===*/
+.button {
+    margin: 0;
+    height: auto;
+    background: transparent;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* button styling */
+  .button {
+    --border-right: 6px;
+    --text-stroke-color: rgba(1, 164, 240, 0.6);
+    --animation-color: #cf4cf0;
+    --fs-size: 2em;
+    letter-spacing: 3px;
+    text-decoration: none;
+    font-size: 1.6rem ;
+    font-family: "Arial";
+    position: relative;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+  }
+  /* this is the text, when you hover on button */
+  .hover-text {
+    position: absolute;
+    box-sizing: border-box;
+    content: attr(data-text);
+    color: var(--animation-color);
+    width: 0%;
+    inset: 0;
+    border-right: var(--border-right) solid var(--animation-color);
+    overflow: hidden;
+    transition: 0.5s;
+    -webkit-text-stroke: 1px var(--animation-color);
+  }
+  /* hover */
+  .button:hover .hover-text {
+    width: 100%;
+    filter: drop-shadow(0 0 23px var(--animation-color))
+  }
+.projects{
+ font-size: 1.2rem;
+}
+
+
+footer{
+    font-family: var(--main-font);
+    font-size: 18px;
+    text-align: center;
+
+}
+
