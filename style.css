@@ -21,14 +21,16 @@ nav {
     top: 0;
     background-color: rgba(255, 255, 255, 0.8);
     z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+    /* Align items to the right by default */
 }
 
 nav ul {
     list-style-type: none;
     padding: 0;
-    margin-right: 5px;
+    margin: 0;
     display: flex;
-    float: right;
 }
 
 nav ul li {
@@ -67,20 +69,20 @@ h3 {
 
 .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    /* Change to center content */
     align-items: center;
     padding: 80px 20px 20px;
     margin-top: 40px;
+    flex-wrap: wrap;
+    /* Allow wrapping for smaller screens */
 }
 
 .welcome-message {
     flex: 1;
     margin-right: 40px;
-
     margin-left: 100px;
-
     text-align: left;
-
 }
 
 .profile-picture {
@@ -98,8 +100,20 @@ h3 {
 
 .profile-picture img:hover {
     transform: scale(1.1);
-    /* Agrandit légèrement l'image au survol */
 }
+
+.jordan {
+    display: inline-block;
+    /* Assurez-vous que l'élément peut être transformé */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.jordan:hover {
+    transform: scale(1.1);
+    color: #cf4cf0;
+}
+
+
 
 .about-me {
     text-align: center;
@@ -111,7 +125,6 @@ h3 {
 
 .languages {
     display: flex;
-
     width: 100%;
     margin-bottom: 20px;
 }
@@ -179,18 +192,93 @@ footer {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        justify-content: center;
+        /* Center nav items on mobile */
+    }
+
+    .container {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .welcome-message {
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 1.2rem;
+        text-align: center;
+        /* Center align text */
+    }
+
+    .welcome-message h1 {
+        font-size: 1.5rem;
+    }
+
+    .welcome-message p {
+        font-size: 1rem;
+    }
+
+    .profile-picture {
+        margin-top: 20px;
+    }
+
+    .profile-picture img {
+        width: 150px;
+        /* Reduce image size for smaller screens */
+    }
+
+    .about-me,
+    .languages {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .languages {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .languages div {
+        margin-bottom: 10px;
+        width: 100%;
+        text-align: center;
+        /* Center align text */
+    }
+
+    nav ul {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 5px;
+    }
+
+    nav ul li a {
+        font-size: 1rem;
+    }
+
+    footer {
+        padding: 10px;
+        font-size: 1rem;
+    }
+}
+
 /* Page Projects */
 
 .projects {
 
-    padding-top: 60px;
+    padding-top: 40px;
     font-size: 1rem;
 }
 
 .Projects {
     text-align: center;
-    padding: 80px 20px 20px;
-    margin-top: 40px;
+    padding: 40px 20px 20px;
+
 }
 
 .project-list {
@@ -213,6 +301,7 @@ footer {
     /* Ensure padding and border are included in the width */
 }
 
+/* Mediaqueries for responsive format Project page */
 @media (max-width: 1200px) {
     .project-card {
         width: calc(50% - 40px);

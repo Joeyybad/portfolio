@@ -13,7 +13,7 @@ const Home = {
   </nav>
   <div class="container">
     <div class="welcome-message">
-      <h1>Bonjour, je m'appelle Jordan,</h1>
+      <h1>Bonjour, je m'appelle <span class="jordan">Jordan</span>,</h1>
       <p> Je suis développeur concepteur d'application web full stack.</p>
     </div>
     <div class="profile-picture">
