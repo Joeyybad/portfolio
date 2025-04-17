@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
 
 /* General Style */
 :root {
     --main-font: 'Fjalla One', sans-serif;
+    --para-font: 'Roboto', sans-serif;
 }
 
 body {
@@ -21,8 +24,7 @@ nav {
     top: 0;
     background-color: rgba(255, 255, 255, 0.8);
     z-index: 1000;
-    display: flex;
-    justify-content: flex-end;
+    justify-items: center;
     /* Align items to the right by default */
 }
 
@@ -37,22 +39,15 @@ nav ul li {
     margin: 0 15px;
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    font-size: 1.3rem;
+.titre2 {
+    color: black;
 }
 
-nav ul li a:hover {
-    color: #cf4cf0;
-}
 
 h1,
-h2,
-h3,
-p {
+h2 {
     font-family: var(--main-font);
+    font-weight: 300;
 }
 
 h1 {
@@ -64,36 +59,49 @@ h2 {
 }
 
 h3 {
-    font-size: 1.2rem;
+    font-family: var(--para-font);
+    font-size: 18px !important;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    /* Change to center content */
-    align-items: center;
-    padding: 80px 20px 20px;
-    margin-top: 40px;
-    flex-wrap: wrap;
-    /* Allow wrapping for smaller screens */
+p {
+    font-family: var(--para-font);
+    font-weight: 300;
 }
+
+
+
+
+
 
 .welcome-message {
     flex: 1;
     margin-right: 40px;
     margin-left: 100px;
-    text-align: left;
+    text-align: center;
+}
+
+.welcome-message p {
+    max-width: 900px;
+    /* limite la largeur */
+    margin: 0 auto;
+    /* centre le paragraphe */
+    text-align: justify;
+    /* justifie le texte */
+    line-height: 1.6;
+    /* pour une meilleure lisibilité */
 }
 
 .profile-picture {
+    padding-top: 50px;
     flex: 1;
     text-align: center;
+    padding-bottom: 20px;
 }
 
 .profile-picture img {
     border-radius: 20px;
     border: 2px solid whitesmoke;
-    width: 250px;
+    width: 150px;
     height: auto;
     transition: transform 0.3s ease;
 }
@@ -103,39 +111,63 @@ h3 {
 }
 
 .jordan {
-    display: inline-block;
     /* Assurez-vous que l'élément peut être transformé */
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .jordan:hover {
     transform: scale(1.1);
-    color: #cf4cf0;
+    color: #eec42c;
 }
 
 
 
 .about-me {
     text-align: center;
-    padding: 20px;
+    padding: 10px;
+}
+
+.languages-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
 }
 
 .languages {
-    display: flex;
-    width: 100%;
-    margin-bottom: 20px;
+    flex: 1;
+    max-width: 300px;
+    text-align: center;
+    justify-content: center;
 }
 
 .languages div {
-    flex: 1;
-    margin: 0 10px;
+    margin-top: 8px;
+}
+
+.line {
+    display: flex;
+    flex-direction: column;
+    /* bascule en colonne */
+
+    /* aligne à gauche */
+    margin-bottom: 6px;
+}
+
+.line h3 {
+    margin-bottom: 2px;
+    /* petit espace sous le titre */
+}
+
+@media (max-width: 600px) {
+    .line {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 .project-link {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 /* === removing default button style ===*/
@@ -148,21 +180,6 @@ h3 {
     cursor: pointer;
 }
 
-/* button styling */
-.button {
-    --border-right: 6px;
-    --text-stroke-color: rgba(0, 0, 0, 0.6);
-    --animation-color: #cf4cf0;
-    --fs-size: 2em;
-    letter-spacing: 3px;
-    text-decoration: none;
-    font-size: 1.6rem;
-    font-family: "Arial";
-    position: relative;
-    text-transform: uppercase;
-    color: transparent;
-    -webkit-text-stroke: 1px var(--text-stroke-color);
-}
 
 /* this is the text, when you hover on button */
 .hover-text {
@@ -192,12 +209,19 @@ footer {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    cursor: pointer;
+}
+
 /* Media Queries for Responsive Design */
 @media (max-width: 768px) {
-    nav {
-        justify-content: center;
-        /* Center nav items on mobile */
-    }
 
     .container {
         flex-direction: column;
@@ -205,39 +229,42 @@ footer {
     }
 
     .welcome-message {
-        margin-left: 10px;
-        margin-right: 10px;
+        margin: 0 10px;
         font-size: 1.2rem;
         text-align: center;
-        /* Center align text */
     }
 
     .welcome-message h1 {
         font-size: 1.5rem;
     }
 
+    .welcome-message p {
+        font-size: 1rem;
+        text-align: justify;
+        max-width: 90%;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
     .jordan {
         display: inline-block;
-        /* Assurez-vous que l'élément peut être transformé */
         transition: transform 0.3s ease, color 0.3s ease;
     }
 
     .jordan:hover {
         transform: scale(1.1);
-        color: #cf4cf0;
-    }
-
-    .welcome-message p {
-        font-size: 1rem;
+        color: #eec42c;
     }
 
     .profile-picture {
         margin-top: 20px;
+        text-align: center;
     }
 
     .profile-picture img {
         width: 150px;
-        /* Reduce image size for smaller screens */
+        height: auto;
+        border-radius: 50%;
     }
 
     .about-me,
@@ -246,71 +273,189 @@ footer {
         padding: 10px;
     }
 
-    .languages {
+    .languages-container {
+        display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 20px;
     }
 
-    .languages div {
-        margin-bottom: 10px;
-        width: 100%;
-        text-align: center;
-        /* Center align text */
-    }
-
-    nav ul {
-        flex-direction: row;
-        justify-content: center;
+    .languages {
+        display: flex;
+        flex-direction: column;
         align-items: center;
+        margin-bottom: 20px;
     }
 
-    nav ul li {
-        margin: 10px 5px;
+    .languages h2 {
+        text-align: center;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
     }
 
-    nav ul li a {
+    .languages .line {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 12px;
+        width: 100%;
+    }
+
+    .languages .line h3 {
+        margin-bottom: 4px;
+        font-size: 1.1rem;
+    }
+
+    .languages .line p {
         font-size: 1rem;
+        line-height: 1.5;
     }
 
     footer {
         padding: 10px;
         font-size: 1rem;
+        text-align: center;
+    }
+
+    .project-link {
+        text-align: center;
+        margin-top: 20px;
     }
 }
 
+/* Partie Projets  */
+
+
+
+
 /* Page Projects */
-
-.projects {
-
-    padding-top: 40px;
-    font-size: 1rem;
-}
-
-.Projects {
-    text-align: center;
-    padding: 40px 20px 20px;
-
-}
-
-.project-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    /* Center the cards horizontally */
-    gap: 20px;
-}
-
-.project-card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+/* From Uiverse.io by xopc333 */
+.button {
+    display: block;
+    position: relative;
+    width: 56px;
+    height: 56px;
+    margin: 0;
     overflow: hidden;
-    width: 350px;
-    max-width: 100%;
-    margin: 10px;
-    box-sizing: border-box;
-    /* Ensure padding and border are included in the width */
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
 }
+
+.button:before,
+.button:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    inset: 5px;
+}
+
+.button:before {
+    border: 4px solid #eec42c;
+    transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+        transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+}
+
+.button:after {
+    border: 4px solid #eec42c;
+    transform: scale(1.3);
+    transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+        transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0;
+}
+
+.button:hover:before,
+.button:focus:before {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+        transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.button:hover:after,
+.button:focus:after {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+        transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+}
+
+.button-box {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.button-elem {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: 17px 18px 0 18px;
+    transform: rotate(180deg);
+    fill: #eec42c;
+}
+
+.button:hover .button-box,
+.button:focus .button-box {
+    transition: 0.4s;
+    transform: translateX(-56px);
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    padding: 1rem;
+    background-color: #f9f9f971;
+    border-radius: 10px;
+    text-align: center;
+    /* ✅ Ajouts importants */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* auto pour s’adapter au contenu */
+    overflow: visible;
+    min-height: 500px;
+}
+
+.carousel-img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 400px;
+    /* ✅ ajuste ici pour que ça soit "dézoomé" */
+    object-fit: contain;
+    display: block;
+    margin: auto;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    z-index: 2;
+    border-radius: 8px;
+}
+
+.carousel-btn.left {
+    left: 10px;
+}
+
+.carousel-btn.right {
+    right: 10px;
+}
+
+
 
 /* Mediaqueries for responsive format Project page */
 @media (max-width: 1200px) {
@@ -385,9 +530,6 @@ footer {
     margin: 0;
 }
 
-li::marker {
-    color: #cf4cf0;
-}
 
 /* Page Contact */
 
@@ -420,12 +562,4 @@ a {
     justify-content: center;
     gap: 20px;
     /* Espacement entre l'image et le texte */
-}
-
-.gifPicture {
-    border-radius: 20px;
-    border: 2px solid whitesmoke;
-    width: 50px;
-    /* Taille ajustée de l'image */
-    height: auto;
 }

@@ -1,225 +1,381 @@
 const { createApp } = Vue;
 const { createRouter, createWebHashHistory } = VueRouter;
 
+const ProjectData = [
+  {
+    logo: "images/VBStats.png",
+    title: "VBstats ",
+    slug: "vbstats",
+    description: "Interface d'application sportive avec vuejs",
+    functionality: ["Navigation sur différentes pages", "Responsivité"],
+    tech: ["Vuejs", "Vitejs", "Html", "CSS", "JS", "tailwind"],
+    images: ["/images/connexionVBSTATS.png", "/images/inscriptionVBSTATS.png", "/images/gestionClubVBSTATS.png"],
+    currentImageIndex: 0,
+    githubLink: "https://github.com/Joeyybad/joeyybad.github.io"
+  },
+  {
+    logo: "images/logobank.jpg",
+    title: "Système ATM Banque ",
+    slug: "atmbank",
+    description: "Learning JAVA POO  creating ATM bank service with swing  ",
+    functionality: ["Register/Login", "Balance du compte ", "Changement de pin", "Retrait rapide, retrait classique"],
+    tech: ["JAVA", "Jframe", "Swing", "Mysql", " JUNIT"],
+    images: ["/images/Bankconnexion.png", "/images/BankInscription.png", "/images/BankOpérations.png", "/images/BankDéposit.png"],
+    currentImageIndex: 0,
+    githubLink: "https://github.com/Joeyybad/breakfranceBackup"
+  },
+  {
+    logo: "images/LogoBreakFranceHeader.webp",
+    title: "Breakfrance application événement sportif Nodejs",
+    slug: "breakfrancenodejs",
+    description: "Same project as the last one but only with Nodejs, Sport event project allowing users to register to sport event",
+    functionality: ["Register/Login", "Displaying event depending on localisation", "Displaying danse event, danse group", "search for games or event", "register to event"],
+    tech: ["Nodejs", "Handlebars", "Express", "Mysql", "Sequelize", "Html", "CSS", "JS"],
+    images: ["/images/BFNodeHome.png", "/images/LocalisationEvent.png", "/images/BFNodeEventRegistration.png", "/images/BFNodeGroupPage.png"],
+    currentImageIndex: 0,
+    githubLink: "https://github.com/Joeyybad/breakfranceBackup"
+  },
+  {
+    logo: "images/LogoBreakFranceHeader.webp",
+    title: "Breakfrance application événement sportif Vuejs Strapi",
+    slug: "breakfrancevuejs",
+    description: "Sport event project to learn composant concept with vuejs & Strapi",
+    functionality: ["Register/Login", " back office gestion with strapi", "search for games or event",],
+    tech: ["Nodejs", "Vuejs", "strapi", "Mysql", "Html", "CSS", "JS"],
+    images: ["/images/HomeBFVUE.png", "/images/ConnBFVUE.png", "/images/GROUPBFVUE.png"],
+    currentImageIndex: 0,
+    githubLink: "https://github.com/Joeyybad/joeyybad.github.io"
+  },
+  {
+    logo: "images/accueil.png",
+    title: "Application événement jeu",
+    slug: "boiteajeux",
+    description: "Collaborative Project on an event for board game (web and web mobile)",
+    functionality: ["Register/Login", "Displaying event, games", "search for games or event", "register to an event"],
+    tech: ["Nodejs", "Handlebars", "Mysql", "Express", "Sequelize", "Html", "CSS", "JS"],
+    images: ["/images/accueil.png", "/images/Jeux.png", "/images/Event.png"],
+    currentImageIndex: 0,
+    githubLink: "https://github.com/Lukheo/Site-events-jeux-societe"
+  },
+  {
+    logo: "images/MeteoLogo.png",
+    title: "Application Météo ",
+    slug: "appmeteo",
+    description: "Collaborative Project about an weather app (web and web mobile)",
+    functionality: ["Geolocalisation", "Diplaying informations via API call", "Favorite weather cities", "Adaptative background"],
+    tech: ["Javascript", "Html", "CSS"],
+    images: ["/images/weatherAppAccueil.png", "/images/WeatherFavoritePage.png"],
+    currentImageIndex: 0,
+    githubLink: "https://github.com/Joeyybad/ProjetMeteo"
+  },
+  {
+    logo: "images/DébutQuiz.png",
+    title: "Jeu Quiz Sport",
+    slug: "quizsport",
+    description: "Quiz game exercice to learn POO concept with javascript",
+    functionality: ["Diplaying questions", "Question selection", "Question indication correct or not"],
+    tech: ["Javascript", "Html", "CSS"],
+    images: ["/images/DébutQuiz.png", "/images/PremièreQuestion.png"],
+    currentImageIndex: 0,
+    githubLink: "https://github.com/Joeyybad/AppJsQuiz.git"
+  },
+  {
+    logo: "images/accueilSneakerz.png",
+    title: "Boutique Sneakers",
+    slug: "sneakershop",
+    description: "Ecomerce Project Exercise using Symfony CLI version 5",
+    functionality: ["Registration mailer service", "Login", "SneakerSection with all sneakerproducts", "Contact form"],
+    tech: ["Symfony5", "PHP", "mysql", "Twig", "Html", "CSS", "Bootsrap"],
+    images: ["/images/accueilSneakerz.png", "/images/pageSneakerz.png"],
+    currentImageIndex: 0,
+    githubLink: "https://github.com/Joeyybad/AppsymfonyTest.git"
+  }
+
+
+
+
+]
 // Composant Home
 const Home = {
   template: `
   <main id="home">
-  <nav>
-    <ul>
-      <li><router-link :to="{name:'projects'}">Projects</router-link></li>
-      <li><router-link :to="{name:'contact'}">Contact</router-link></li>
-    </ul>
-  </nav>
   <div class="container">
-    <div class="welcome-message">
-      <h1>Bonjour, je m'appelle <span class="jordan">Jordan</span>,</h1>
-      <p> Je suis développeur concepteur d'application web full stack.</p>
-    </div>
     <div class="profile-picture">
       <img src="images/profilavatar.PNG" alt="avatar profil">
     </div>
+    <div class="welcome-message">
+      <h1>Bonjour, je m'appelle <span class="jordan">Jordan</span>, je suis développeur fullstack</h1>
+      <p>
+        Issu du domaine sportif, j’ai souhaité digitaliser mon activité afin d’en accroître
+        l’impact. Au fil de cette transition, j’ai découvert une véritable passion pour le
+        développement web, qui m’anime aujourd’hui autant que le sport. Les
+        compétences transversales acquises dans ces deux univers me permettent
+        d’évoluer et de me rapprocher de mon objectif : coacher et accompagner des
+        équipes de développement sur des projets digitaux.
+      </p>
+    </div>
   </div>
+
+
   <div class="about-me">
-    <h2>Langages</h2>
-    <div class="languages">
-      <div>
-        <h3>Javascript</h3>
-        <p>Nodejs, Vuejs</p>
-      </div>
-      <div>
-        <h3>PHP</h3>
-        <p>Symfony</p>
-      </div>
-    </div>
-    <div class="project-link">
-      <router-link :to="{ name: 'projects'}">
-        <button class="button" data-text="Awesome">
-          <span class="actual-text">Projects</span>
-          <span aria-hidden="true" class="hover-text">Projects</span>
-        </button>
-      </router-link>
-    </div>
-  </div>
-</main>
-  `
-};
+    <div class="languages-container">
 
-// Composant Projects
-const Projects = {
-  template: `
-  <main id="project">
-    <nav>
-      <ul class="nav">
-        <li><router-link :to="{name:'home'}">Home</router-link></li>
-        <li><router-link :to="{name:'contact'}">Contact</router-link></li>
-      </ul>
-    </nav>
-    <div class="projects">
-      <h1 class="Projects">Projects</h1>
-      <div v-if="projects.length" class="project-list">
-        <div v-for="project in projects" :key="project.title" class="project-card">
-          <div class="carousel">
-            <img v-for="(image, index) in project.images" :src="image" :class="['carousel-image', { active: index === project.currentImageIndex }]" :alt="project.title">
-            <button class="carousel-button prev" @click="prevImage(project)">‹</button>
-            <button class="carousel-button next" @click="nextImage(project)">›</button>
-          </div>
-          <div class="card-content">
-            <h2>{{ project.title }}</h2>
-            <p>{{ project.description }}</p>
-            <h3>Functionality</h3>
-            <ul>
-              <li v-for="func in project.functionality" :key="func">{{ func }}</li>
-            </ul>
-
-            <h3>Technologies</h3>
-            <ul>
-              <li v-for="tech in project.tech" :key="tech">{{ tech }}</li>
-            </ul>
-            <a v-if="project.githubLink" :href="project.githubLink" target="_blank">View this project on GitHub</a>
-          </div>
+      <div class="languages">
+        <h2 class="titre2 jordan">Langages</h2>
+        <div class="line">
+          <h3>Front-End:</h3>
+          <p>Html, CSS, JS, Vuejs</p>
+        </div>
+        <div class="line">
+          <h3>Back-End:</h3>
+          <p>NodeJS, Java, Spring, PHP</p>
+        </div>
+        <div class="line">
+          <h3>Base de données:</h3>
+          <p>MySQL, PostgreSQL</p>
+        </div>
+        <div class="line">
+          <h3>Outils,logiciels:</h3>
+          <p> MacOs, vscode, eclipse, Docker, Figma, Postman, MAMP </p>
         </div>
       </div>
-      <div v-else>
-        <p>No projects available.</p>
+
+      <div class="languages">
+        <h2 class="titre2 jordan">Compétences</h2>
+        <div class="line">
+          <p>Maquettage et Prototypage avec Figma</p>
+        </div>
+          <div class="line">
+          <p> Elaboration de cahier des charges, définitions de tâches product backlog</p>
+        </div>
+        <div class="line">
+          <p> Réalisation d'interface accessible et responsive  </p>
+        </div>
+        <div class="line">
+          <p> Elaboration des schéma de base de donnée et gestion de base de donnée par ORM</p>
+        </div>
+        <div class="line">
+          <p> Architecture de projet MVC, API </p>
+        </div>
+      </div>
+
+      <div class="languages">
+        <h2 class="titre2 jordan">Savoir-être</h2>
+        <div class="line">
+          <p>Autonomie</p>
+        </div>
+         <div class="line">
+          <p>Esprit sportif,</p>
+        </div>
+         <div class="line">
+          <p>Adaptation</p>
+        </div>
+         <div class="line">
+          <p>Calme</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="container mt-5">
+  <h2 class="text-center mb-4 titre2 jordan">Mes projets</h2>
+  <div class="row justify-content-center">
+    <div
+      class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4"
+      v-for="project in projects"
+      :key="project.title"
+      @click="goToProject(project)"
+    >
+      <div class="card h-100 text-center border-0 shadow-sm" style="background-color: rgba(255,255,255,0.05);">
+        <img :src="project.logo" :alt="project.title" class="card-img-top img-fluid p-2" style="height: 80px; object-fit: contain;" />
+        <div class="card-body p-2">
+          <h6 class="card-title" style="font-size: 0.9rem;">{{ project.title }}</h6>
+        </div>
       </div>
     </div>
-  </main>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4 titre2 jordan">Me contacter</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-8"> <!-- Largeur réduite ici -->
+      <form name="contact" method="POST" data-netlify="true">
+  <div class="form-group">
+    <label for="name">Nom</label>
+    <input type="text" class="form-control" id="name" v-model="contactForm.name" required />
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" v-model="contactForm.email" required />
+  </div>
+  <div class="form-group">
+    <label for="message">Message</label>
+    <textarea class="form-control" id="message" rows="4" v-model="contactForm.message" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-outline-warning mt-3">Envoyer</button>
+</form>
+    </div>
+  </div>
+</div>
+
+
+  
+</main>
+
   `,
   data() {
     return {
-      projects: [
-        {
-          title: "Breakfrance sport event app [In Progress] ",
-          description: "Same project as the last one but only with Nodejs, Sport event project allowing users to register to sport event",
-          functionality: ["Register/Login", "Displaying event depending on localisation", "Displaying danse event, danse group", "search for games or event", "register to event"],
-          tech: ["Nodejs", "Handlebars", "Express", "Mysql", "Sequelize", "Html", "CSS", "JS"],
-          images: ["images/BFNodeHome.png", "images/LocalisationEvent.png", "images/BFNodeEventRegistration.png", "images/BFNodeGroupPage.png"],
-          currentImageIndex: 0,
-          githubLink: "https://github.com/Joeyybad/breakfranceBackup"
-        },
-        {
-          title: "Breakfrance sport event app [In Progress] ",
-          description: "Sport event project to learn composant concept with vuejs",
-          functionality: ["Register/Login", "Displaying event with api strapi", "search for games or event",],
-          tech: ["Nodejs", "Vuejs", "strapi", "Mysql", "Html", "CSS", "JS"],
-          images: ["images/HomeBFVUE.png", "images/ConnBFVUE.png", "images/GROUPBFVUE.png"],
-          currentImageIndex: 0,
-          githubLink: "https://github.com/Joeyybad/joeyybad.github.io"
-        },
-        {
-          title: "Game Event App",
-          description: "Collaborative Project on an event for board game (web and web mobile)",
-          functionality: ["Register/Login", "Displaying event, games", "search for games or event", "register to an event"],
-          tech: ["Nodejs", "Handlebars", "Mysql", "Express", "Sequelize", "Html", "CSS", "JS"],
-          images: ["images/accueil.png", "images/Jeux.png", "images/Event.png"],
-          currentImageIndex: 0,
-          githubLink: "https://github.com/Lukheo/Site-events-jeux-societe"
-        },
-        {
-          title: "Weather App ",
-          description: "Collaborative Project about an weather app (web and web mobile)",
-          functionality: ["Geolocalisation", "Diplaying informations via API call", "Favorite weather cities", "Adaptative background"],
-          tech: ["Javascript", "Html", "CSS"],
-          images: ["images/weatherAppAccueil.png", "images/WeatherFavoritePage.png"],
-          currentImageIndex: 0,
-          githubLink: "https://github.com/Joeyybad/ProjetMeteo"
-        },
-        {
-          title: "Sport quiz game",
-          description: "Quiz game exercice to learn POO concept with javascript",
-          functionality: ["Diplaying questions", "Question selection", "Question indication correct or not"],
-          tech: ["Javascript", "Html", "CSS"],
-          images: ["images/DébutQuiz.png", "images/PremièreQuestion.png"],
-          currentImageIndex: 0,
-          githubLink: "https://github.com/Joeyybad/AppJsQuiz.git"
-        },
-        {
-          title: "Sneakers Shop",
-          description: "Ecomerce Project Exercise using Symfony CLI version 5",
-          functionality: ["Registration mailer service", "Login", "SneakerSection with all sneakerproducts", "Contact form"],
-          tech: ["Symfony5", "PHP", "mysql", "Twig", "Html", "CSS", "Bootsrap"],
-          images: ["images/accueilSneakerz.png", "images/pageSneakerz.png"],
-          currentImageIndex: 0,
-          githubLink: "https://github.com/Joeyybad/AppsymfonyTest.git"
-        },
-
-      ]
+      contactForm: {
+        name: '',
+        email: '',
+        message: ''
+      },
+      projects: ProjectData,
     };
   },
   methods: {
-    nextImage(project) {
-      project.currentImageIndex = (project.currentImageIndex + 1) % project.images.length;
+    submitContactForm() {
+      console.log('Formulaire envoyé', this.contactForm);
+      this.contactForm.name = '';
+      this.contactForm.email = '';
+      this.contactForm.message = '';
+      alert("Merci pour votre message, je vous répondrai bientôt !");
     },
-    prevImage(project) {
-      project.currentImageIndex = (project.currentImageIndex - 1 + project.images.length) % project.images.length;
+
+    goToProject(project) {
+      this.$router.push(`/project/${project.slug}`);
     }
   }
 };
-const Contact = {
+const ProjectDetail = {
   template: `
-  <main id="contact">
-  <nav>
-    <ul class="nav">
-      <li><router-link :to="{name:'home'}">Home</router-link></li>
-      <li><router-link :to="{name:'projects'}">Projects</router-link></li>
-    </ul>
-  </nav>
-  <div class="contacts">
-    <div class="contact-item localisation">
-      <h2 class="local">Address</h2>
-      <div v-if="Address" class="contact-content">
-        <img src="images/emplacement.gif" class="gifPicture" alt="GIFlocalisation">
-        <h3 class="contactText">{{ Address }}</h3>
-      </div>
-      <div v-else>
-        <p>No address</p>
-      </div>
+  <!-- Chargement -->
+<div v-if="isLoading" class="text-center mt-5">
+  <p>Chargement en cours...</p>
+</div>
+
+<!-- Affichage si le projet est trouvé -->
+<div v-else-if="project" class="project-detail">
+
+  <!-- Bouton de retour -->
+  <button @click="$router.push('/')" class="button mb-4">
+    <div class="button-box">
+      <span class="button-elem">
+        <svg viewBox="0 0 46 40" xmlns="http://www.w3.org/2000/svg">
+          <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z" />
+        </svg>
+      </span>
+      <span class="button-elem">
+        <svg viewBox="0 0 46 40">
+          <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z" />
+        </svg>
+      </span>
     </div>
-    <div class="contact-item email">
-      <h2 class="mail">Mail</h2>
-      <div v-if="Mail" class="contact-content">
-        <img src="images/message.gif" class="gifPicture" alt="GIFemail">
-        <h3 class="contactText"><a href="mailto:jnkunga@hotmail.com">{{ Mail }}</a></h3>
+  </button>
+
+  <div class="row">
+    <!-- Colonne gauche -->
+    <div class="col-md-6 mb-4">
+      <h1 class="mb-3">{{ project.title }}</h1>
+      <p>{{ project.description }}</p>
+
+      <div class="mb-4">
+        <h4>Fonctionnalités :</h4>
+        <ul>
+          <li v-for="(func, i) in project.functionality" :key="i">{{ func }}</li>
+        </ul>
       </div>
-      <div v-else>
-        <p>No mail</p>
+
+      <div class="mb-4">
+        <h4>Technologies :</h4>
+        <ul>
+          <li v-for="(tech, i) in project.tech" :key="i">{{ tech }}</li>
+        </ul>
       </div>
+
+      <a :href="project.githubLink" target="_blank" class="btn btn-outline-warning">Voir sur GitHub</a>
     </div>
-    <div class="contact-item telephone">
-      <h2 class="phone">Phone Number</h2>
-      <div v-if="phoneNumber" class="contact-content">
-        <img src="images/telephone.gif" class="gifPicture" alt="GIFtelephone">
-        <h3 class="contactText">{{ phoneNumber }}</h3>
-      </div>
-      <div v-else>
-        <p>No number</p>
-      </div>
-    </div>
-    <div class="contact-item thanks">
-      <div class="contact-content">
-        <img src="images/pouces-vers-le-haut.gif" class="gifPicture" alt="GIFpouce">
-        <h3>Thanks for your attention, if you need more information contact me</h3>
+
+    <!-- Colonne droite : Carrousel -->
+    <div class="col-md-6 text-center mb-4">
+      <div class="carousel">
+        <img :src="currentImage" alt="Image projet" class="carousel-img" />
+        <button
+          @click="prevImage"
+          style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background-color: #eec42c; border: none; padding: 10px; cursor: pointer;"
+        >
+          ‹
+        </button>
+        <button
+          @click="nextImage"
+          style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background-color: #eec42c; border: none; padding: 10px; cursor: pointer;"
+        >
+          ›
+        </button>
       </div>
     </div>
   </div>
-</main>
+</div>
+
+<!-- Projet non trouvé -->
+<div v-else class="text-center mt-5">
+  <p>Projet introuvable.</p>
+</div>
+
   `,
   data() {
     return {
-      Address: "Le Mans",
-      Mail: "jnkunga@hotmail.com",
-      phoneNumber: "0668313627"
+      project: null,
+      currentIndex: 0,
+      isLoading: true,
     };
+  },
+
+  created() {
+    const slug = this.$route.params.slug;
+    this.project = ProjectData.find(p => p.slug === slug) || null;
+    this.isLoading = false;
+  },
+
+  computed: {
+    currentImage() {
+      return this.project?.images?.[this.currentIndex] || '';
+    }
+  },
+
+  methods: {
+    nextImage() {
+      if (!this.project || !this.project.images.length) return;
+      this.currentIndex = (this.currentIndex + 1) % this.project.images.length;
+    },
+    prevImage() {
+      if (!this.project || !this.project.images.length) return;
+      this.currentIndex =
+        (this.currentIndex - 1 + this.project.images.length) %
+        this.project.images.length;
+    }
   }
 };
+
+const ProjectNotFound = {
+  template: `
+    <div v-else class="text-center mt-5">
+  <h2>😕 Oups...</h2>
+  <p>Le projet que vous cherchez n'existe pas ou a été déplacé.</p>
+  <router-link to="/" class="btn btn-outline-primary mt-3">Retour à l'accueil</router-link>
+</div>
+
+  `
+};
+
 
 
 // Définition des routes
 const routes = [
   { path: "/", name: "home", component: Home },
-  { path: "/projects", name: "projects", component: Projects },
-  { path: "/contact", name: "contact", component: Contact },
+  { path: '/project/:slug', component: ProjectDetail }
+
 ];
 
 // Création de l'instance du routeur
