@@ -172,31 +172,34 @@ const Home = {
       </div>
     </div>
 
-    <!-- Formulaire de contact -->
-    <div class="container mt-5">
-      <h2 class="text-center mb-4 titre2 jordan">Me contacter</h2>
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          
-  <input type="hidden" name="form-name" value="contact" />
-  
-  <div class="form-group">
-    <label for="name">Nom</label>
-    <input type="text" class="form-control" id="name" name="name" required />
-  </div>
+   <!-- Formulaire de contact -->
+<div class="container mt-5">
+  <h2 class="text-center mb-4 titre2 jordan">Me contacter</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <form name="contact" method="POST" data-netlify="true" action="/">
+        <input type="hidden" name="form-name" value="contact" />
 
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" class="form-control" id="email" name="email" required />
-  </div>
+        <div class="form-group">
+          <label for="name">Nom</label>
+          <input type="text" class="form-control" id="name" name="name" required />
+        </div>
 
-  <div class="form-group">
-    <label for="message">Message</label>
-    <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-  </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" required />
+        </div>
 
-  <button type="submit" class="btn btn-outline-warning mt-3">Envoyer</button>
-</form>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-outline-warning mt-3">Envoyer</button>
+      </form>
+    </div>
+  </div>
+</div>
 
         </div>
       </div>
