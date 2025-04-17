@@ -99,130 +99,108 @@ const ProjectData = [
 const Home = {
   template: `
   <main id="home">
-  <div class="container">
-    <div class="profile-picture">
-      <img src="images/profilavatar.PNG" alt="avatar profil">
-    </div>
-    <div class="welcome-message">
-      <h1>Bonjour, je m'appelle <span class="jordan">Jordan</span>, je suis développeur fullstack</h1>
-      <p>
-        Issu du domaine sportif, j’ai souhaité digitaliser mon activité afin d’en accroître
-        l’impact. Au fil de cette transition, j’ai découvert une véritable passion pour le
-        développement web, qui m’anime aujourd’hui autant que le sport. Les
-        compétences transversales acquises dans ces deux univers me permettent
-        d’évoluer et de me rapprocher de mon objectif : coacher et accompagner des
-        équipes de développement sur des projets digitaux.
-      </p>
-    </div>
-  </div>
-
-
-  <div class="about-me">
-    <div class="languages-container">
-
-      <div class="languages">
-        <h2 class="titre2 jordan">Langages</h2>
-        <div class="line">
-          <h3>Front-End:</h3>
-          <p>Html, CSS, JS, Vuejs</p>
-        </div>
-        <div class="line">
-          <h3>Back-End:</h3>
-          <p>NodeJS, Java, Spring, PHP</p>
-        </div>
-        <div class="line">
-          <h3>Base de données:</h3>
-          <p>MySQL, PostgreSQL</p>
-        </div>
-        <div class="line">
-          <h3>Outils,logiciels:</h3>
-          <p> MacOs, vscode, eclipse, Docker, Figma, Postman, MAMP </p>
-        </div>
+    <div class="container">
+      <div v-if="showSuccessMessage" class="alert alert-success text-center mt-4">
+        Merci pour votre message ! Je vous répondrai très vite. 😊
       </div>
 
-      <div class="languages">
-        <h2 class="titre2 jordan">Compétences</h2>
-        <div class="line">
-          <p>Maquettage et Prototypage avec Figma</p>
-        </div>
-          <div class="line">
-          <p> Elaboration de cahier des charges, définitions de tâches product backlog</p>
-        </div>
-        <div class="line">
-          <p> Réalisation d'interface accessible et responsive  </p>
-        </div>
-        <div class="line">
-          <p> Elaboration des schéma de base de donnée et gestion de base de donnée par ORM</p>
-        </div>
-        <div class="line">
-          <p> Architecture de projet MVC, API </p>
-        </div>
+      <div class="profile-picture">
+        <img src="images/profilavatar.PNG" alt="avatar profil">
       </div>
-
-      <div class="languages">
-        <h2 class="titre2 jordan">Savoir-être</h2>
-        <div class="line">
-          <p>Autonomie</p>
-        </div>
-         <div class="line">
-          <p>Esprit sportif,</p>
-        </div>
-         <div class="line">
-          <p>Adaptation</p>
-        </div>
-         <div class="line">
-          <p>Calme</p>
-        </div>
+      <div class="welcome-message">
+        <h1>Bonjour, je m'appelle <span class="jordan">Jordan</span>, je suis développeur fullstack</h1>
+        <p>
+          Issu du domaine sportif, j’ai souhaité digitaliser mon activité afin d’en accroître
+          l’impact. Au fil de cette transition, j’ai découvert une véritable passion pour le
+          développement web, qui m’anime aujourd’hui autant que le sport. Les
+          compétences transversales acquises dans ces deux univers me permettent
+          d’évoluer et de me rapprocher de mon objectif : coacher et accompagner des
+          équipes de développement sur des projets digitaux.
+        </p>
       </div>
-
     </div>
-  </div>
-  <div class="container mt-5">
-  <h2 class="text-center mb-4 titre2 jordan">Mes projets</h2>
-  <div class="row justify-content-center">
-    <div
-      class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4"
-      v-for="project in projects"
-      :key="project.title"
-      @click="goToProject(project)"
-    >
-      <div class="card h-100 text-center border-0 shadow-sm" style="background-color: rgba(255,255,255,0.05);">
-        <img :src="project.logo" :alt="project.title" class="card-img-top img-fluid p-2" style="height: 80px; object-fit: contain;" />
-        <div class="card-body p-2">
-          <h6 class="card-title" style="font-size: 0.9rem;">{{ project.title }}</h6>
+
+    <div class="about-me">
+      <div class="languages-container">
+        <!-- Langages -->
+        <div class="languages">
+          <h2 class="titre2 jordan">Langages</h2>
+          <div class="line"><h3>Front-End:</h3><p>Html, CSS, JS, Vuejs</p></div>
+          <div class="line"><h3>Back-End:</h3><p>NodeJS, Java, Spring, PHP</p></div>
+          <div class="line"><h3>Base de données:</h3><p>MySQL, PostgreSQL</p></div>
+          <div class="line"><h3>Outils,logiciels:</h3><p>MacOs, vscode, eclipse, Docker, Figma, Postman, MAMP</p></div>
+        </div>
+
+        <!-- Compétences -->
+        <div class="languages">
+          <h2 class="titre2 jordan">Compétences</h2>
+          <div class="line"><p>Maquettage et Prototypage avec Figma</p></div>
+          <div class="line"><p>Élaboration de cahier des charges, définitions de tâches product backlog</p></div>
+          <div class="line"><p>Réalisation d'interface accessible et responsive</p></div>
+          <div class="line"><p>Élaboration des schémas de base de données et gestion de base via ORM</p></div>
+          <div class="line"><p>Architecture de projet MVC, API</p></div>
+        </div>
+
+        <!-- Savoir-être -->
+        <div class="languages">
+          <h2 class="titre2 jordan">Savoir-être</h2>
+          <div class="line"><p>Autonomie</p></div>
+          <div class="line"><p>Esprit sportif</p></div>
+          <div class="line"><p>Adaptation</p></div>
+          <div class="line"><p>Calme</p></div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<div class="container mt-5">
-  <h2 class="text-center mb-4 titre2 jordan">Me contacter</h2>
-  <div class="row justify-content-center">
-    <div class="col-md-8"> <!-- Largeur réduite ici -->
-      <form name="contact" method="POST" data-netlify="true">
-  <div class="form-group">
-    <label for="name">Nom</label>
-    <input type="text" class="form-control" id="name" v-model="contactForm.name" required />
-  </div>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" class="form-control" id="email" v-model="contactForm.email" required />
-  </div>
-  <div class="form-group">
-    <label for="message">Message</label>
-    <textarea class="form-control" id="message" rows="4" v-model="contactForm.message" required></textarea>
-  </div>
-  <button type="submit" class="btn btn-outline-warning mt-3">Envoyer</button>
-</form>
+    <!-- Projets -->
+    <div class="container mt-5">
+      <h2 class="text-center mb-4 titre2 jordan">Mes projets</h2>
+      <div class="row justify-content-center">
+        <div
+          class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4"
+          v-for="project in projects"
+          :key="project.title"
+          @click="goToProject(project)"
+        >
+          <div class="card h-100 text-center border-0 shadow-sm" style="background-color: rgba(255,255,255,0.05);">
+            <img :src="project.logo" :alt="project.title" class="card-img-top img-fluid p-2" style="height: 80px; object-fit: contain;" />
+            <div class="card-body p-2">
+              <h6 class="card-title" style="font-size: 0.9rem;">{{ project.title }}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
+    <!-- Formulaire de contact -->
+    <div class="container mt-5">
+      <h2 class="text-center mb-4 titre2 jordan">Me contacter</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <form name="contact" method="POST" data-netlify="true" action="/contact">
+            <input type="hidden" name="form-name" value="contact" />
 
-  
-</main>
+            <div class="form-group">
+              <label for="name">Nom</label>
+              <input type="text" class="form-control" id="name" name="name" required />
+            </div>
 
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-outline-warning mt-3">Envoyer</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
   `,
   data() {
     return {
@@ -232,7 +210,21 @@ const Home = {
         message: ''
       },
       projects: ProjectData,
+      showSuccessMessage: false
     };
+  },
+  mounted() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('success') === 'true') {
+      this.showSuccessMessage = true;
+      setTimeout(() => {
+        this.showSuccessMessage = false;
+        // Nettoie l’URL pour éviter que le message ne réapparaisse au rechargement
+        const url = new URL(window.location);
+        url.searchParams.delete('success');
+        window.history.replaceState({}, document.title, url.pathname);
+      }, 5000);
+    }
   },
   methods: {
     submitContactForm() {
@@ -242,7 +234,6 @@ const Home = {
       this.contactForm.message = '';
       alert("Merci pour votre message, je vous répondrai bientôt !");
     },
-
     goToProject(project) {
       this.$router.push(`/project/${project.slug}`);
     }
