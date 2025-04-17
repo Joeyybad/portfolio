@@ -6,9 +6,10 @@ const ProjectData = [
     logo: "images/VBStats.png",
     title: "VBstats ",
     slug: "vbstats",
-    description: "Interface d'application sportive avec vuejs",
+    description: "Interface d'application sportive avec vuejs maquette (prototype réalisée avec figma)",
     functionality: ["Navigation sur différentes pages", "Responsivité"],
     tech: ["Vuejs", "Vitejs", "Html", "CSS", "JS", "tailwind"],
+    outil: ["Figma", "VSCODE",],
     images: ["/images/connexionVBSTATS.png", "/images/inscriptionVBSTATS.png", "/images/gestionClubVBSTATS.png"],
     currentImageIndex: 0,
     githubLink: "https://github.com/Joeyybad/joeyybad.github.io"
@@ -26,7 +27,7 @@ const ProjectData = [
   },
   {
     logo: "images/LogoBreakFranceHeader.webp",
-    title: "Breakfrance application événement sportif Nodejs",
+    title: "Breakfrance application événement sportif Nodejs (prototype réalisée avec figma)",
     slug: "breakfrancenodejs",
     description: "Same project as the last one but only with Nodejs, Sport event project allowing users to register to sport event",
     functionality: ["Register/Login", "Displaying event depending on localisation", "Displaying danse event, danse group", "search for games or event", "register to event"],
@@ -37,7 +38,7 @@ const ProjectData = [
   },
   {
     logo: "images/LogoBreakFranceHeader.webp",
-    title: "Breakfrance application événement sportif Vuejs Strapi",
+    title: "Breakfrance application événement sportif Vuejs Strapi (prototype réalisée avec figma)",
     slug: "breakfrancevuejs",
     description: "Sport event project to learn composant concept with vuejs & Strapi",
     functionality: ["Register/Login", " back office gestion with strapi", "search for games or event",],
@@ -48,7 +49,7 @@ const ProjectData = [
   },
   {
     logo: "images/accueil.png",
-    title: "Application événement jeu",
+    title: "Application événement jeu (prototype réalisée avec figma)",
     slug: "boiteajeux",
     description: "Collaborative Project on an event for board game (web and web mobile)",
     functionality: ["Register/Login", "Displaying event, games", "search for games or event", "register to an event"],
@@ -177,7 +178,7 @@ const Home = {
   <h2 class="text-center mb-4 titre2 jordan">Me contacter</h2>
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <form name="contact" method="POST" data-netlify="true" action="/">
+      <form name="contact" method="POST" data-netlify="true" action="/?success=true">
         <input type="hidden" name="form-name" value="contact" />
 
         <div class="form-group">
