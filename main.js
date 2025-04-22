@@ -178,7 +178,7 @@ const Home = {
   <h2 class="text-center mb-4 titre2 jordan">Me contacter</h2>
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <form name="contact" method="POST" data-netlify="true" action="/contact">
+      <form name="contact" method="POST" data-netlify="true" action="/">
         <input type="hidden" name="form-name" value="contact" />
 
         <div class="form-group">
@@ -232,13 +232,6 @@ const Home = {
     }
   },
   methods: {
-    submitContactForm() {
-      console.log('Formulaire envoyé', this.contactForm);
-      this.contactForm.name = '';
-      this.contactForm.email = '';
-      this.contactForm.message = '';
-      alert("Merci pour votre message, je vous répondrai bientôt !");
-    },
     goToProject(project) {
       this.$router.push(`/project/${project.slug}`);
     }
