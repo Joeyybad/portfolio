@@ -18,9 +18,15 @@
 <body>
     <div id="app">
         <router-view></router-view>
+        <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+            <input type="text" name="name" />
+            <input type="email" name="email" />
+            <textarea name="message"></textarea>
+        </form>
 
     </div>
-    <footer> © Developped by <a href="">Jordan</a> Made with <a href="vuejs.org">Vuejs</a> </footer>
+    <footer> © Developped by <span class="jordan">Jordan</span> Made with <a href="vuejs.org" class="jordan">Vuejs</a>
+    </footer>
 
     <script src="main.js"></script>
 </body>
