@@ -195,7 +195,7 @@ const Home = {
           <label for="message">Message</label>
           <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
         </div>
-
+ 
         <button type="submit" class="btn btn-outline-warning mt-3">Envoyer</button>
       </form>
     </div>
